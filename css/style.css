@@ -91,7 +91,7 @@ i.fa {
 
 .page__topNav {
     border-bottom: 1px solid #3EC6E0;
-    background-color: #3DD9D6;
+    /*background-color: #3DD9D6;*/
 }
 
 .page__title {
@@ -99,7 +99,6 @@ i.fa {
     font-weight: normal;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-    color: #2e2e2e;
 }
 
 .page__nav {
