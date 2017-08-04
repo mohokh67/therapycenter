@@ -20,7 +20,10 @@ body {
     padding: 0;
 }
 
-/*Shared properties*/
+.carouselContainer{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
 .title, .card__footer {
     color: #FEFEFE;
@@ -175,6 +178,7 @@ body {
 .page__title {
     font-size: 5rem;
     font-weight: normal;
+    margin-bottom: 2rem;
 }
 
 .page__nav {
@@ -208,9 +212,12 @@ i.fa {
     margin-bottom: 1rem;
 }
 
-.footer__link,
-.footer__link:hover {
+.link, .link:hover{
     text-decoration: none;
+}
+
+.link:hover{
+    color: #3EC6E0;
 }
 
 .flex {
