@@ -3,7 +3,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 */
 
 /*--------- Font ------------*/
-@import url(https://fonts.googleapis.com/css?family=Droid+Sans);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 /* fontawesome */
 [class*="fontawesome-"]:before {
@@ -12,9 +12,9 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 * {
     margin: 0;
     padding: 0;
-    border: 0;
+    /*border: 0;*/
     font-size: 100%;
-    font: inherit;
+    font-family: 'Open Sans', sans-serif;
     vertical-align: baseline;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -40,14 +40,12 @@ html, body{
 }
 
 body {
-    background: #F2F2F2;
-    font-family: 'Droid Sans', sans-serif;
+    background: #F0F0F0;
     line-height: 1;
     font-size: 16px;
-    /*background-image: url(file:///C:/www/ali/img/back.jpg);*/
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: 'Montserrat', sans-serif;
+   font-family: 'Open Sans', sans-serif;
 }
 
 .wrapper {
@@ -194,7 +192,8 @@ body {
 }
 
 .card__price{
-    font-size: 2rem;   
+    font-size: 2rem;
+    font-weight: normal; 
 }
 
 .card__price, .card__footer{
@@ -270,4 +269,26 @@ body {
     margin-top: auto;
     text-transform: capitalize;
 }
+
+.page__title{
+    font-size: 3rem;
+    font-weight: normal;
+
+}
+
+.page__nav{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+footer{
+    background: #2e2e2e;
+    color: #fff;
+    margin-top: 3rem;
+    min-height: 5rem;
+    padding-top: 2rem;
+}
+
 
