@@ -80,6 +80,10 @@ body {
     background-color: #3EC6E0;
 }
 
+.bgBlack{
+    background-color: #2e2e2e;
+}
+
 .card__title {
     font-size: 4.5rem;
     font-weight: lighter;
@@ -147,13 +151,10 @@ body {
     margin-bottom: 2rem;
 }
 
-.grid__column {
+.card {
     flex: 1;
     text-align: center;
     margin: 1rem;
-}
-
-.card {
     flex-basis: 300px;
     display: flex;
     flex-direction: column;
@@ -166,12 +167,13 @@ body {
 }
 
 .card__footer {
+    position: relative;
     margin-top: auto;
     text-transform: capitalize;
 }
 
 .page__title {
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: normal;
 }
 
@@ -183,8 +185,6 @@ body {
 
 
 footer {
-    background: #2e2e2e;
-    color: #F0F0F0;
     margin-top: 3rem;
     min-height: 5rem;
     padding-top: 2rem;
@@ -201,9 +201,15 @@ i.fa {
     cursor: pointer;
 }
 
+.inverse{
+    color: #F0F0F0;
+}
+.footer__item{
+    margin-bottom: 1rem;
+}
+
 .footer__link,
 .footer__link:hover {
-    color: #F0F0F0;
     text-decoration: none;
 }
 
