@@ -112,6 +112,10 @@ i.fa {
     }
 }
 
+.carousel .item{
+    height: 45rem;
+}
+
 
 /*  cards */
 
