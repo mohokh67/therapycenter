@@ -206,16 +206,17 @@
         <!-- End of rwo 2 -->
     </div>
 
+    <hr>
     <div class="container-fluid">
+            <address class="text-center"><i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> 174 Gloucester Road, Bristol, BS7 8NU</address>
         <div class="row">
-            <div class="grid__row">
-                <!-- Google map -->
-                <div id="map">I am the map</div>
+            <div>
+                <div id="map"></div>
                 <script>
                   function initMap() {
                     var uluru = {lat: 51.478, lng: -2.590};
                     var map = new google.maps.Map(document.getElementById('map'), {
-                      zoom: 15,
+                      zoom: 16,
                       center: uluru
                     });
                     var marker = new google.maps.Marker({
@@ -227,7 +228,6 @@
                 <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD7uWuQ35Ya08kV10fqrZaKylgKnmwJ0q8&callback=initMap">
                 </script>
-                <!-- ------------------------------------------------ -->
             </div>
         </div>
     </div>

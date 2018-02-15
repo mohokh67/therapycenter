@@ -112,6 +112,12 @@ i.fa {
     }
 }
 
+hr{
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(158, 158, 158, 0.75), rgba(0, 0, 0, 0));
+}
+
 /*  cards */
 
 .card {
@@ -241,12 +247,10 @@ i.fa {
 /*  Footer  */
 
 footer {
-    margin-top: 3rem;
     min-height: 5rem;
     padding-top: 2rem;
     padding-bottom: 2rem;
     line-height: 2.3;
-    border-top: 1px solid #3EC6E0;
 }
 
 .footer__item {
