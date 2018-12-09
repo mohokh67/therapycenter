@@ -14,6 +14,7 @@ export default props => (
 
     <link rel="shortcut icon" href="/static/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
 
     <meta
       name="google-site-verification"

@@ -4,9 +4,12 @@
   "description": "therapycenter.uk website",
   "main": "index.js",
   "scripts": {
+    "predev": "npm run css-build",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "css-build": "node-sass --omit-source-map-url assets/sass/styles.scss static/css/styles.css",
+    "css-watch": "npm run css-build -- --watch"
   },
   "repository": {
     "type": "git",
@@ -21,11 +24,13 @@
   "homepage": "https://github.com/mohokh67/therapycenter#readme",
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
+    "bulma": "^0.7.2",
+    "google-maps-react": "^2.0.2",
     "next": "^7.0.2",
     "node-sass": "^4.11.0",
+    "nprogress": "^0.2.0",
     "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "nprogress": "^0.2.0"
+    "react-dom": "^16.6.3"
   },
   "husky": {
     "hooks": {

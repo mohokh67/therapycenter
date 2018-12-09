@@ -1,0 +1,102 @@
+{
+  "massages": [
+    {
+      "id": "sports-massage",
+      "name": "Sports Massage",
+      "duration": "60",
+      "price-old": "4500",
+      "price-new": "3500",
+      "description": "",
+      "benefits": [
+        "Treat sports injuries",
+        "Recover muscle cramps",
+        "Prevent sports injuries",
+        "Recover from sports events",
+        "Improve flexibility"
+      ]
+    },
+    {
+      "id": "deep-tissue-massage",
+      "name": "Deep Tissue Massage",
+      "duration": "60",
+      "price-old": "4500",
+      "price-new": "3500",
+      "description": "",
+      "benefits": [
+        "Relieve muscle tension",
+        "Stiffness relief",
+        "Reduce nerve compression",
+        "Relaxes muscles, tendons, and ligaments"
+      ]
+    },
+    {
+      "id": "full-holistic-massage",
+      "name": "Full Holistic Massage",
+      "duration": "60",
+      "price-old": "4500",
+      "price-new": "3500",
+      "description": "",
+      "benefits": [
+        "Promote relaxation",
+        "Reduced stress and Anxiety",
+        "Increased circulation",
+        "Skin benefits"
+      ]
+    },
+    {
+      "id": "remedial-massage",
+      "name": "Remedial Massage",
+      "duration": "30",
+      "price-old": "2500",
+      "price-new": "1700",
+      "description": "",
+      "benefits": [
+        "Release stiff necks",
+        "Release frozen shoulders",
+        "Back pain",
+        "Reduces painful contractions",
+        "Releasing muscle tension",
+        "Improved posture"
+      ]
+    },
+    {
+      "id": "head-massage",
+      "name": "Head Massage",
+      "duration": "30",
+      "price-old": "2500",
+      "price-new": "1500",
+      "description": "",
+      "benefits": [
+        "Boosts memory capabilities",
+        "Prevent migraines and headaches",
+        "Relieves sleeplessness, restlessness",
+        "Promotes hair growth",
+        "Renews energy levels",
+        "Improves blood circulation",
+        "Healthy hair growth",
+        "Relieves symptoms of anxiety and depression",
+        "Helps with emotional stress and hormone fluctuations"
+      ]
+    },
+    {
+      "id": "personal-training",
+      "name": "Personal Training",
+      "duration": "60",
+      "price-old": "3500",
+      "price-new": "2500",
+      "description": "",
+      "benefits": [
+        "Weight loss",
+        "Nutrition program",
+        "Cooking recipes",
+        "Weight management",
+        "Core strength",
+        "Physical activity",
+        "Toning build muscles",
+        "Fitness",
+        "Flexibility",
+        " Strength training"
+      ]
+    }
+  ]
+}
