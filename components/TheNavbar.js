@@ -2,21 +2,21 @@ import Link from 'next/link';
 
 export default () => (
   <nav>
-    <ul>
+    <ul className="columns is-1">
       <Link href="#">
-        <a>Find us</a>
+        <a className="column has-text-white-ter">Location</a>
       </Link>
       <Link href="/about">
-        <a>About</a>
+        <a className="column has-text-white-ter">About</a>
       </Link>
       <Link href="/terms">
-        <a>Terms</a>
+        <a className="column has-text-white-ter">Terms</a>
       </Link>
       <Link href="/faq">
-        <a>FAQ</a>
+        <a className="column has-text-white-ter">FAQ</a>
       </Link>
       <Link href="#">
-        <a>Contact</a>
+        <a className="column has-text-white-ter">Contact</a>
       </Link>
     </ul>
   </nav>
