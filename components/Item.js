@@ -16,6 +16,19 @@ export default class Item extends Component {
     }
   };
 
+  formatPrice = PriceInPence => {
+    if (PriceInPence == 0) {
+      return '';
+    }
+    var pounds = Math.floor(PriceInPence / 100);
+    var pence = PriceInPence % 100;
+    if (pence) {
+      return `£${pounds}.${pence}`;
+    } else {
+      return `£${pounds}`;
+    }
+  };
+
   render() {
     const {
       benefits,
@@ -25,10 +38,6 @@ export default class Item extends Component {
       priceNew,
       priceOld
     } = this.props.service;
-    // const price = `£ ${priceNew}`;
-    // if(priceOld > 0) {
-    //   return (<del>{priceOld}</del>) + 'ddd'
-    // }
 
     return (
       <div className="column is-4">
@@ -36,16 +45,18 @@ export default class Item extends Component {
           <div className="card-header has-background-primary has-text-light">
             <div className="columns is-multiline">
               <div className="column is-full has-text-centered">
-                <del>{priceOld}</del>
-                {priceNew}
+                <h2 className="is-size-4">
+                  <del>{this.formatPrice(priceOld)}</del>{' '}
+                  {this.formatPrice(priceNew)}
+                </h2>
               </div>
 
               <div className="column is-full card-header-title has-text-light has-text-centered">
-                <h2 className="is-size-2">{name}</h2>
+                <h1 className="is-size-1">{name}</h1>
               </div>
 
               <div className="column is-full has-text-centered">
-                <span>{this.formatTime(duration)}</span>
+                <h3 className="is-size-4">{this.formatTime(duration)}</h3>
               </div>
             </div>
           </div>
@@ -58,7 +69,7 @@ export default class Item extends Component {
             </ul>
           </div>
           <div className="card-footer has-background-primary">
-            <a href="#" className="has-text-light card-footer-item">
+            <a href="#" className="has-text-light card-footer-item is-size-4">
               Book Now
             </a>
           </div>
