@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import TheNavbar from './TheNavbar';
 import TheHeader from './TheHeader';
 import TheMeta from './TheMeta';
 import TheFooter from './TheFooter';
@@ -8,6 +9,7 @@ export default class Page extends Component {
     return (
       <div className="site">
         <TheMeta />
+        <TheNavbar />
         <TheHeader />
         <main className="site-content">{this.props.children}</main>
         <TheFooter />
@@ -19,6 +21,7 @@ export default class Page extends Component {
           }
           .site-content {
             flex: 1;
+            padding-top: 1em;
           }
         `}</style>
       </div>

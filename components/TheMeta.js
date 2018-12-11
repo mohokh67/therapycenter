@@ -13,6 +13,10 @@ export default props => (
     <title>Sports Massage | Therapy Center Bristol | {props.pageTitle}</title>
 
     <link rel="shortcut icon" href="/static/favicon.png" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" type="text/css" href="/static/css/nprogress.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/styles.css" />
 

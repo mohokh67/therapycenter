@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-
+import Link from 'next/link';
 export default class Item extends Component {
   formatTime = timeInMinute => {
     if (timeInMinute < 60) {
@@ -36,12 +36,14 @@ export default class Item extends Component {
       duration,
       name,
       priceNew,
-      priceOld
+      priceOld,
+      id
     } = this.props.service;
+    const link = `/book/${id}`;
 
     return (
       <div className="column is-4">
-        <div className="card">
+        <div className="card bm--card-equal-height">
           <div className="card-header has-background-primary has-text-light">
             <div className="columns is-multiline">
               <div className="column is-full has-text-centered">
@@ -52,7 +54,7 @@ export default class Item extends Component {
               </div>
 
               <div className="column is-full card-header-title has-text-light has-text-centered">
-                <h1 className="is-size-1">{name}</h1>
+                <h1 className="is-size-3">{name}</h1>
               </div>
 
               <div className="column is-full has-text-centered">
@@ -64,14 +66,25 @@ export default class Item extends Component {
             {description}
             <ul>
               {benefits.map(benefit => (
-                <li key={benefit}>{benefit}</li>
+                <li key={benefit} className="benefit">
+                  <i className="material-icons">check</i>
+                  <span>{benefit}</span>
+                </li>
               ))}
             </ul>
+            <style jsx>{`
+              li {
+                margin-top: 1rem;
+                display: flex;
+              }
+            `}</style>
           </div>
-          <div className="card-footer has-background-primary">
-            <a href="#" className="has-text-light card-footer-item is-size-4">
-              Book Now
-            </a>
+          <div className="card-footer has-background-info">
+            <Link href={link}>
+              <a className="has-text-light card-footer-item is-size-4">
+                Book Now
+              </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head />
-        <body>
+        <body className="has-navbar-fixed-top">
           <Main />
           <NextScript />
         </body>
