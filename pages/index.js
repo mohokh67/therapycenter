@@ -5,7 +5,7 @@ import Item from '../components/Item';
 
 export default class Index extends Component {
   render() {
-    console.log(sourceData);
+    // console.log(sourceData);
     return (
       <Fragment>
         <div className="container is-fluid">

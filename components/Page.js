@@ -3,6 +3,7 @@ import TheNavbar from './TheNavbar';
 import TheHeader from './TheHeader';
 import TheMeta from './TheMeta';
 import TheFooter from './TheFooter';
+import ContactForm from './ContactForm';
 
 export default class Page extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class Page extends Component {
         <TheHeader />
         <main className="site-content">{this.props.children}</main>
         <TheFooter />
+        <ContactForm />
         <style jsx>{`
           .site {
             display: flex;

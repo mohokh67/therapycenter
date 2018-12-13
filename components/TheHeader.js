@@ -21,6 +21,6 @@ const headerStyle = {
 
 export default () => (
   <header>
-    <div className="container is-fluid ">gfdfgfdgd</div>
+    <div className="container is-fluid ">this is the header</div>
   </header>
 );

@@ -6,7 +6,7 @@ const style = { height: '400px', width: '100%' };
 class TheMap extends Component {
   render() {
     return (
-      <div style={style}>
+      <div style={style} id="theLocation">
         <Map
           style={style}
           google={this.props.google}
