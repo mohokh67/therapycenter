@@ -9595,3 +9595,13 @@ label.panel-block:hover {
 .bm--card-equal-height .card-footer {
   margin-top: auto;
 }
+
+.with-icon {
+  display: flex;
+  color: inherit;
+  margin-bottom: 0.7rem;
+}
+
+.material-icons {
+  margin-right: 0.3rem;
+}

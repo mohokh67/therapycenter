@@ -5,39 +5,26 @@ export default () => (
   <footer className="footer has-background-grey-dark has-text-white-ter">
     <div className="container">
       <div className="level">
-        <div className="level-left footer__item">
+        <div className="level-left">
           <span>
-            <address>
-              <i className="fa fa-map-marker fa-lg" aria-hidden="true" /> 174
-              Gloucester Road, Bristol, BS7 8NU
+            <address className="with-icon">
+              <i className="material-icons">location_on</i>
+              174 Gloucester Road, Bristol, BS7 8NU
             </address>
-            <br />
-            <i className="fa fa-phone fa-lg" aria-hidden="true" />
-            <a
-              href="tel:01173297893"
-              className="link pointer has-text-grey-lighter"
-            >
-              0117 329 7893
+            <a href="tel:01173297893" className="with-icon">
+              <i className="material-icons">phone_iphone</i> 0117 329 7893
             </a>
-            <br />
-            <i className="fa fa-mobile fa-lg" aria-hidden="true" />
-            <a
-              href="tel:07935636185"
-              className="link pointer has-text-grey-lighter"
-            >
-              079 35 6361 85
+            <a href="tel:07935636185" className="with-icon">
+              <i className="material-icons">phone</i> 079 35 6361 85
             </a>
           </span>
         </div>
-        <div className="level-right footer__item">
-          <span>
-            Opening Hours:
-            <br />
-            Monday – Friday 9 am – 6 pm
-            <br />
-            Saturday – Sunday 11 am – 5 pm
-            <br />
+        <div>
+          <span className="with-icon">
+            <i className="material-icons">schedule</i> Opening Hours:
           </span>
+          <p>Monday – Friday 9 am – 6 pm</p>
+          <p>Saturday – Sunday 11 am – 5 pm</p>
         </div>
       </div>
     </div>

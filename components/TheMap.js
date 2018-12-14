@@ -7,6 +7,10 @@ class TheMap extends Component {
   render() {
     return (
       <div style={style} id="theLocation">
+        <address className="with-icon">
+          <i className="material-icons">location_on</i>
+          174 Gloucester Road, Bristol, BS7 8NU
+        </address>
         <Map
           style={style}
           google={this.props.google}

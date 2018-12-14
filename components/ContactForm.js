@@ -16,70 +16,74 @@ export default class ContactForm extends Component {
             />
           </header>
           <section className="modal-card-body">
-            <div class="field">
-              <label class="label">Name</label>
-              <div class="control has-icons-left">
+            <div className="field">
+              <label className="label">Name</label>
+              <div className="control has-icons-left">
                 <input
-                  class="input is-small"
+                  className="input is-small"
                   type="text"
                   placeholder="Your name"
                 />
-                <span class="icon is-small is-left">
-                  <i class="material-icons">perm_identity</i>
+                <span className="icon is-small is-left">
+                  <i className="material-icons">perm_identity</i>
                 </span>
               </div>
             </div>
 
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control has-icons-left">
+            <div className="field">
+              <label className="label">Email</label>
+              <div className="control has-icons-left">
                 <input
-                  class="input is-small"
+                  className="input is-small"
                   type="email"
                   placeholder="Email input"
                 />
-                <span class="icon is-small is-left">
-                  <i class="material-icons">email</i>
+                <span className="icon is-small is-left">
+                  <i className="material-icons">email</i>
                 </span>
               </div>
             </div>
 
-            <div class="field">
-              <label class="label">Mobile</label>
-              <div class="control has-icons-left">
+            <div className="field">
+              <label className="label">Mobile</label>
+              <div className="control has-icons-left">
                 <input
-                  class="input is-small"
+                  className="input is-small"
                   type="text"
                   placeholder="Mobile number"
                 />
-                <span class="icon is-small is-left">
-                  <i class="material-icons">stay_primary_portrait</i>
+                <span className="icon is-small is-left">
+                  <i className="material-icons">phone_iphone</i>
                 </span>
               </div>
             </div>
 
-            <div class="field">
-              <label class="label">Message</label>
-              <div class="control">
-                <textarea class="textarea" placeholder="Textarea" rows="3" />
+            <div className="field">
+              <label className="label">Message</label>
+              <div className="control">
+                <textarea
+                  className="textarea"
+                  placeholder="Textarea"
+                  rows="3"
+                />
               </div>
             </div>
 
-            <div class="field">
-              <div class="control">
-                <label class="checkbox">
+            <div className="field">
+              <div className="control">
+                <label className="checkbox">
                   <input type="checkbox" checked />
                   &nbsp;Add me to mailing list for offers and newsletter
                 </label>
               </div>
             </div>
 
-            <div class="field is-grouped">
-              <div class="control">
-                <button class="button is-link">Send</button>
+            <div className="field is-grouped">
+              <div className="control">
+                <button className="button is-link">Send</button>
               </div>
-              <div class="control">
-                <button class="button is-text" onClick={toggleContactForm}>
+              <div className="control">
+                <button className="button is-text" onClick={toggleContactForm}>
                   Cancel
                 </button>
               </div>

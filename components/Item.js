@@ -66,18 +66,12 @@ export default class Item extends Component {
             {description}
             <ul>
               {benefits.map(benefit => (
-                <li key={benefit} className="benefit">
+                <li key={benefit} className="benefit with-icon">
                   <i className="material-icons">check</i>
                   <span>{benefit}</span>
                 </li>
               ))}
             </ul>
-            <style jsx>{`
-              li {
-                margin-top: 1rem;
-                display: flex;
-              }
-            `}</style>
           </div>
           <div className="card-footer has-background-info">
             <Link href={link}>
