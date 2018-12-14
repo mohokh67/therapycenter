@@ -14,8 +14,9 @@ export default class Index extends Component {
               <Item service={massage} key={massage.id} />
             ))}
           </div>
+          <hr />
         </div>
-        {/* <TheMap /> */}
+        <TheMap />
       </Fragment>
     );
   }

@@ -23,7 +23,7 @@ export default class Page extends Component {
           }
           .site-content {
             flex: 1;
-            padding-top: 1em;
+            padding-top: 1rem;
           }
         `}</style>
       </div>

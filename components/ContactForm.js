@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { toggleContactForm } from '../lib/utility';
 
 export default class ContactForm extends Component {
+  subscried() {
+    console.log('subscribed');
+  }
+
   render() {
     return (
       <div className="modal contact-form-modal">
@@ -72,8 +76,8 @@ export default class ContactForm extends Component {
             <div className="field">
               <div className="control">
                 <label className="checkbox">
-                  <input type="checkbox" checked />
-                  &nbsp;Add me to mailing list for offers and newsletter
+                  <input type="checkbox" onChange={this.subscried} />
+                  &nbsp;Add me to mailing list for offers
                 </label>
               </div>
             </div>

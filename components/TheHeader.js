@@ -1,7 +1,5 @@
-import Link from 'next/link';
 import Router from 'next/router';
 import NProgress from 'nprogress';
-import TheNavbar from './TheNavbar';
 
 Router.onRouteChangeStart = () => {
   console.log('onRouteChangeStart triggered');
@@ -15,12 +13,15 @@ Router.onRouteChangeError = () => {
   console.log('onRouteChangeError triggered');
   NProgress.done();
 };
-const headerStyle = {
-  borderBottom: '1px solid #3EC6E0'
+
+const imageStyle = {
+  width: '100%'
 };
 
 export default () => (
   <header>
-    <div className="container is-fluid ">this is the header</div>
+    <div className="container is-fluid">
+      <img src="static/img/header.jpg" alt="Header image" style={imageStyle} />
+    </div>
   </header>
 );
