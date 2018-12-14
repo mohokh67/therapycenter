@@ -1,11 +1,14 @@
-import Link from 'next/link';
-import Router from 'next/router';
-
+const footerStyle = {
+  'padding-bottom': '2rem'
+};
 export default () => (
-  <footer className="footer has-background-grey-dark has-text-white-ter">
+  <footer
+    className="footer has-background-grey-dark has-text-white-ter"
+    style={footerStyle}
+  >
     <div className="container">
-      <div className="level">
-        <div className="level-left">
+      <div className="columns">
+        <div className="column">
           <span>
             <address className="with-icon">
               <i className="material-icons">location_on</i>
@@ -19,7 +22,40 @@ export default () => (
             </a>
           </span>
         </div>
-        <div>
+
+        <div className="column">
+          <p>Join our mailing list for offers</p>
+          <style jsx>{`
+            p {
+              padding-bottom: 0.4rem;
+            }
+          `}</style>
+
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control has-icons-left">
+                  <input
+                    className="input is-small"
+                    type="email"
+                    placeholder="Email"
+                  />
+                  <span className="icon is-small is-left">
+                    <i className="material-icons">email</i>
+                  </span>
+                </div>
+              </div>
+
+              <div className="field">
+                <div className="control">
+                  <button className="button is-primary is-small">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="column">
           <span className="with-icon">
             <i className="material-icons">schedule</i> Opening Hours:
           </span>

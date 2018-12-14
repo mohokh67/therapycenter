@@ -36,7 +36,7 @@ export default class ContactForm extends Component {
                 <input
                   className="input is-small"
                   type="email"
-                  placeholder="Email input"
+                  placeholder="Email"
                 />
                 <span className="icon is-small is-left">
                   <i className="material-icons">email</i>
