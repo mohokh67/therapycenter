@@ -21,7 +21,7 @@ const imageStyle = {
 export default () => (
   <header>
     <div className="container is-fluid">
-      <img src="static/img/header.jpg" alt="Header image" style={imageStyle} />
+      <img src="/static/img/header.jpg" alt="Header image" style={imageStyle} />
     </div>
   </header>
 );

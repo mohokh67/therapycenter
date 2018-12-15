@@ -1,5 +1,5 @@
 const footerStyle = {
-  'padding-bottom': '2rem'
+  paddingBottom: '2rem'
 };
 export default () => (
   <footer
