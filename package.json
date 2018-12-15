@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "predev": "npm run css-build",
-    "dev": "next",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start",
+    "start": "NODE_ENV=production node server.js",
     "css-build": "node-sass --omit-source-map-url assets/sass/styles.scss static/css/styles.css",
     "css-watch": "npm run css-build -- --watch"
   },
@@ -25,6 +25,7 @@
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "bulma": "^0.7.2",
+    "express": "^4.16.4",
     "google-maps-react": "^2.0.2",
     "moment": "^2.23.0",
     "next": "^7.0.2",
