@@ -11,7 +11,7 @@ export default class Page extends Component {
       <div className="site">
         <TheMeta />
         <TheNavbar />
-        <TheHeader />
+        {/* <TheHeader /> */}
         <main className="site-content">{this.props.children}</main>
         <TheFooter />
         <ContactForm />

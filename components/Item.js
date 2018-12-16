@@ -74,7 +74,7 @@ export default class Item extends Component {
             </ul>
           </div>
           <div className="card-footer has-background-info">
-            <Link href={link}>
+            <Link as={`/book/${id}`} href={`/book?title=${id}`}>
               <a className="has-text-light card-footer-item is-size-4">
                 Book Now
               </a>
