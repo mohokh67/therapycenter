@@ -11,9 +11,12 @@ app
   .then(() => {
     const server = express();
 
-    server.get('/book/:id', (req, res) => {
+    server.get('/book/:id/:calendarView', (req, res) => {
       const actualPage = '/book';
-      const queryParams = { title: req.params.id };
+      const queryParams = {
+        title: req.params.id,
+        view: req.params.calendarView
+      };
       app.render(req, res, actualPage, queryParams);
     });
 

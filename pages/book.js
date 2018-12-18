@@ -16,13 +16,16 @@ const Massage = withRouter(props => {
   return <Item service={currentMassage} key={currentMassage.id} />;
 });
 
-const Calander = () => {
+const Booking = withRouter(props => {
   return (
-    <div className="column">
-      <Calendar />
+    <div className="column is-8">
+      <Calendar
+        view={props.router.query.view}
+        title={props.router.query.title}
+      />
     </div>
   );
-};
+});
 
 class Book extends Component {
   render() {
@@ -31,7 +34,7 @@ class Book extends Component {
       <div className="container is-fluid">
         <div className="columns is-multiline">
           <Massage />
-          <Calander />
+          <Booking />
         </div>
       </div>
     );

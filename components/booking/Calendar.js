@@ -1,14 +1,24 @@
 import React, { Component, Fragment } from 'react';
-import Link from 'next/link';
 import getConfig from 'next/config';
 import moment from 'moment';
 import Day from './Day';
+import CalendarView from './CalendarView';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Calendar extends Component {
+  calcBookingEndDate(view) {
+    if (view === 'fortnight') {
+      return moment().add(2, 'weeks');
+    } else if (view === 'monthly') {
+      return moment().add(1, 'months');
+    }
+
+    return moment().add(1, 'weeks');
+  }
+
   render() {
-    const bookingEndDate = moment().add(2, 'months');
+    const bookingEndDate = this.calcBookingEndDate(this.props.view);
     let calendarDays = [];
     let currentDate = moment();
     const workingDays = publicRuntimeConfig.booking.workingDays.map(x =>
@@ -27,7 +37,10 @@ class Calendar extends Component {
 
     return (
       <Fragment>
-        <Day />
+        <CalendarView title={this.props.title} view={this.props.view} />
+        {calendarDays.map(thisDay => (
+          <Day key={thisDay.dayDate.unix()} today={thisDay} />
+        ))}
       </Fragment>
     );
   }
