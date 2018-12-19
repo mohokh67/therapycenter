@@ -21,16 +21,9 @@ class Calendar extends Component {
     const bookingEndDate = this.calcBookingEndDate(this.props.view);
     let calendarDays = [];
     let currentDate = moment();
-    const workingDays = publicRuntimeConfig.booking.workingDays.map(x =>
-      parseInt(x, 10)
-    );
-
     let i = 0;
     while (currentDate.isSameOrBefore(bookingEndDate)) {
-      calendarDays.push({
-        dayDate: currentDate,
-        working: workingDays.includes(currentDate.day())
-      });
+      calendarDays.push(currentDate);
       i++;
       currentDate = moment().add(i, 'days');
     }
@@ -39,7 +32,7 @@ class Calendar extends Component {
       <Fragment>
         <CalendarView title={this.props.title} view={this.props.view} />
         {calendarDays.map(thisDay => (
-          <Day key={thisDay.dayDate.unix()} today={thisDay} />
+          <Day key={thisDay.unix()} today={thisDay} />
         ))}
       </Fragment>
     );

@@ -20,9 +20,7 @@ module.exports = {
       nonWorkingDays: process.env.BOOKING_NON_WORKING_DAYS.split(','),
       sessionDuration: process.env.BOOKING_SESSION_DURATION,
       dayBeginsAt: process.env.BOOKING_DAY_BEGINS_AT,
-      dayEndsAt: process.env.BOOKING_DAY_ENDS_AT,
-      dayBreakBeginsAt: process.env.BOOKING_DAY_BREAK_BEGINS_AT,
-      dayBreakEndsAt: process.env.BOOKING_DAY_BREAK_ENDS_AT
+      dayEndsAt: process.env.BOOKING_DAY_ENDS_AT
     },
     applicationName: process.env.APPLICATION_NAME
   }

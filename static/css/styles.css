@@ -9605,3 +9605,7 @@ label.panel-block:hover {
 .material-icons {
   margin-right: 0.3rem;
 }
+
+.monospace {
+  font-family: monospace;
+}
