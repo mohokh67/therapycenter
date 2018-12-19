@@ -21,18 +21,20 @@ class Day extends Component {
           <div className="column monospace is-size-7">
             {today.format('ddd, D MMM')}
           </div>
-          <div className="column">Closed!</div>
+          <div className="column">
+            {publicRuntimeConfig.booking.nonWorkingDay}
+          </div>
         </div>
       );
     }
 
-    const dayBeginsAt = parseInt(publicRuntimeConfig.booking.dayBeginsAt);
-    const dayEndsAt = parseInt(publicRuntimeConfig.booking.dayEndsAt);
+    const dayBeginsAt = publicRuntimeConfig.booking.dayBeginsAt;
+    const dayEndsAt = publicRuntimeConfig.booking.dayEndsAt;
     const workingHours = Array.from(
       { length: dayEndsAt - dayBeginsAt },
       (x, i) => dayBeginsAt + i
     );
-    hourAvailability = 2;
+    hourAvailability = 1;
 
     return (
       <div className="columns">

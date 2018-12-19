@@ -4,7 +4,7 @@ import moment from 'moment';
 import Day from './Day';
 import CalendarView from './CalendarView';
 
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+// const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Calendar extends Component {
   calcBookingEndDate(view) {

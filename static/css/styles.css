@@ -9609,3 +9609,7 @@ label.panel-block:hover {
 .monospace {
   font-family: monospace;
 }
+
+.pointer {
+  cursor: pointer;
+}

@@ -18,9 +18,12 @@ module.exports = {
       lifetimeInDays: process.env.BOOKING_DURATION_IN_DAYS,
       workingDays: process.env.BOOKING_WORKING_DAYS.split(','),
       nonWorkingDays: process.env.BOOKING_NON_WORKING_DAYS.split(','),
-      sessionDuration: process.env.BOOKING_SESSION_DURATION,
-      dayBeginsAt: process.env.BOOKING_DAY_BEGINS_AT,
-      dayEndsAt: process.env.BOOKING_DAY_ENDS_AT
+      sessionDuration: parseInt(process.env.BOOKING_SESSION_DURATION),
+      dayBeginsAt: parseInt(process.env.BOOKING_DAY_BEGINS_AT),
+      dayEndsAt: parseInt(process.env.BOOKING_DAY_ENDS_AT),
+      freeToBook: process.env.BOOKING_AVAILABLE_HOUR_ALT_TEXT,
+      alreadyBooked: process.env.BOOKING_UNAVAILABLE_HOUR_ALT_TEXT,
+      nonWorkingDay: process.env.BOOKING_NON_WORKING_DAY_TEXT
     },
     applicationName: process.env.APPLICATION_NAME
   }

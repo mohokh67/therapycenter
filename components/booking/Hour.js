@@ -9,18 +9,21 @@ class Hour extends Component {
   render() {
     // Not working, break, off
     let hourColor = 'has-background-grey-lighter';
+    let altText = '';
 
     if (this.props.availability === 1) {
       // available
-      hourColor = 'has-background-success';
+      hourColor = 'button is-success';
+      altText = publicRuntimeConfig.booking.freeToBook;
     } else if (this.props.availability === 2) {
       // booked
-      hourColor = 'has-background-danger';
+      hourColor = 'button is-danger';
+      altText = publicRuntimeConfig.booking.alreadyBooked;
     }
 
     return (
       <div className="column has-text-centered">
-        <div className={hourColor}>
+        <div className={hourColor} title={altText}>
           {this.props.startFrom}-{this.props.startFrom + 1}
         </div>
       </div>
