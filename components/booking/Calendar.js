@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import getConfig from 'next/config';
+// import getConfig from 'next/config';
 import moment from 'moment';
 import Day from './Day';
 import CalendarView from './CalendarView';
@@ -30,9 +30,13 @@ class Calendar extends Component {
 
     return (
       <Fragment>
-        <CalendarView title={this.props.title} view={this.props.view} />
+        <CalendarView massageId={this.props.massageId} view={this.props.view} />
         {calendarDays.map(thisDay => (
-          <Day key={thisDay.unix()} today={thisDay} />
+          <Day
+            key={thisDay.unix()}
+            today={thisDay}
+            updateBooking={this.props.updateBooking}
+          />
         ))}
       </Fragment>
     );

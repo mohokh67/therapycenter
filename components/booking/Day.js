@@ -45,7 +45,9 @@ class Day extends Component {
           <Hour
             key={thisHour}
             startFrom={thisHour}
+            today={today.unix()}
             availability={hourAvailability}
+            updateBooking={this.props.updateBooking}
           />
         ))}
       </div>

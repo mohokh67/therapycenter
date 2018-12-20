@@ -12,22 +12,22 @@ class CalendarView extends Component {
           <div className="level-left" />
           <div className="level-right">
             <Link
-              as={`/book/${this.props.title}/weekly`}
-              href={`/book?title=${this.props.title}&view=weekly`}
+              as={`/book/${this.props.massageId}/weekly`}
+              href={`/book?title=${this.props.massageId}&view=weekly`}
             >
               <a className={this.populateClassName('weekly')}>Weekly</a>
             </Link>
 
             <Link
-              as={`/book/${this.props.title}/fortnight`}
-              href={`/book?title=${this.props.title}&view=fortnight`}
+              as={`/book/${this.props.massageId}/fortnight`}
+              href={`/book?title=${this.props.massageId}&view=fortnight`}
             >
               <a className={this.populateClassName('fortnight')}>Fortnight</a>
             </Link>
 
             <Link
-              as={`/book/${this.props.title}/monthly`}
-              href={`/book?title=${this.props.title}&view=monthly`}
+              as={`/book/${this.props.massageId}/monthly`}
+              href={`/book?title=${this.props.massageId}&view=monthly`}
             >
               <a className={this.populateClassName('monthly')}>Monthly</a>
             </Link>
