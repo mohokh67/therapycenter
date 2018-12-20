@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import moment from 'moment';
-import base from '../lib/base';
+import base, { firebaseApp } from '../lib/base';
 import Item from '../components/Item';
 import sourceData from '../data';
 import Calendar from '../components/booking/Calendar';
@@ -28,18 +28,32 @@ const Booking = withRouter(props => {
 });
 
 class Book extends Component {
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {
+  //      initial: 'state',
+  //      some: ''          // <-------  this line
+  //   }
+  //  this.updateBooking = this.updateBooking.bind(this)
+  // }
+
   state = {
+    loading: false,
     bookings: {}
   };
 
   componentDidMount() {
     console.log('🔥 Booking Mounted');
+    this.setState({ loading: true });
     const massageId = this.props.query.title;
     this.ref = base.syncState(`bookings/${massageId}`, {
       context: this,
-      state: 'bookings'
+      state: 'bookings',
+      then: () => {
+        console.log('✔🔄 Just synced with firebase');
+        this.setState({ loading: false });
+      }
     });
-    console.log(this.state);
   }
 
   /**
@@ -48,17 +62,18 @@ class Book extends Component {
    */
   updateBooking = (date, startFrom, updatedBooking) => {
     console.log('going to update the state');
-    this.setState({ name: 'ssss' });
-    let massageId = 'sports-massage';
-    let bookings = { ...this.state.bookingsMo };
-    let dateTimeStamp = moment.unix(date).format('YYYYMMDD');
+    return new Promise((resolve, reject) => {
+      let massageId = 'sports-massage';
+      let dateTimeStamp = moment.unix(date).format('YYYYMMDD');
 
-    bookings[massageId] = {};
-    bookings[massageId][dateTimeStamp] = {};
-    bookings[massageId][dateTimeStamp][startFrom] = {};
-    bookings[massageId][dateTimeStamp][startFrom] = updatedBooking;
-    this.setState({ bookings });
-    console.log(this.state);
+      firebaseApp
+        .database()
+        .ref(`bookings/${massageId}/${dateTimeStamp}/${startFrom}`)
+        .set(updatedBooking)
+        .then(() => {
+          resolve();
+        });
+    });
   };
 
   componentWillUnmount() {

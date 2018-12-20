@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import getConfig from 'next/config';
 // import Link from 'next/link';
-// import moment from 'moment';
+import moment from 'moment';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -10,8 +10,8 @@ class Hour extends Component {
     const updatedBooking = {
       name: 'MoHo Khaleqi',
       available: 'booked',
-      createdAt: 123,
-      updatedAt: 456
+      createdAt: moment().valueOf(),
+      updatedAt: 0
     };
     this.props.updateBooking(
       this.props.today,
