@@ -39,6 +39,10 @@ class Hour extends Component {
   }
 
   bookMe = () => {
+    if (!this.state.isFree || this.state.isLoading) {
+      return false;
+    }
+
     const updatedBooking = {
       name: 'MoHo Khaleqi',
       available: 'booked',
@@ -50,10 +54,6 @@ class Hour extends Component {
       this.props.startFrom,
       updatedBooking
     );
-  };
-
-  nothing = () => {
-    return;
   };
 
   render() {
@@ -72,7 +72,7 @@ class Hour extends Component {
             (this.state.isFree ? 'is-success' : 'is-danger is-static') +
             (this.state.isLoading ? ' is-loading' : '')
           }
-          onClick={this.state.isFree ? this.bookMe : this.nothing}
+          onClick={this.bookMe}
         >
           {this.props.startFrom}-{this.props.startFrom + 1}
         </div>
