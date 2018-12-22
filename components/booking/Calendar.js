@@ -36,6 +36,7 @@ class Calendar extends Component {
             key={thisDay.unix()}
             today={thisDay}
             updateBooking={this.props.updateBooking}
+            massageId={this.props.massageId}
           />
         ))}
       </Fragment>

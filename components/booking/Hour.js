@@ -1,11 +1,39 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import getConfig from 'next/config';
-// import Link from 'next/link';
 import moment from 'moment';
+import { fetchItem } from '../../lib/utility';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Hour extends Component {
+  componentDidMount() {
+    const { props } = this;
+    const dateTimeStamp = moment.unix(props.today).format('YYYYMMDD');
+
+    fetchItem({
+      resource: `bookings/${props.massageId}/${dateTimeStamp}/${
+        props.startFrom
+      }`
+    }).then(result => {
+      const thisHourButton = document.getElementById(this.generateUniqueId());
+      // I don't like this approach :(
+      if (result == null || result.available == 'free') {
+        thisHourButton.classList.add('is-success');
+        thisHourButton.addEventListener('click', this.bookMe);
+        thisHourButton.setAttribute(
+          'title',
+          publicRuntimeConfig.booking.freeToBook
+        );
+      } else {
+        thisHourButton.classList.add('is-danger');
+        thisHourButton.setAttribute(
+          'title',
+          publicRuntimeConfig.booking.alreadyBooked
+        );
+      }
+    });
+  }
+
   bookMe = () => {
     const updatedBooking = {
       name: 'MoHo Khaleqi',
@@ -20,24 +48,15 @@ class Hour extends Component {
     );
   };
 
+  generateUniqueId = () => {
+    const dateTimeStamp = moment.unix(this.props.today).format('YYYYMMDD');
+    return `button-${dateTimeStamp}-${this.props.startFrom}`;
+  };
+
   render() {
-    // Not working, break, off
-    let hourColor = 'has-background-grey-lighter';
-    let altText = '';
-
-    if (this.props.availability === 1) {
-      // available
-      hourColor = 'button is-success';
-      altText = publicRuntimeConfig.booking.freeToBook;
-    } else if (this.props.availability === 2) {
-      // booked
-      hourColor = 'button is-danger';
-      altText = publicRuntimeConfig.booking.alreadyBooked;
-    }
-
     return (
       <div className="column has-text-centered">
-        <div className={hourColor} title={altText} onClick={this.bookMe}>
+        <div className="button" id={this.generateUniqueId()}>
           {this.props.startFrom}-{this.props.startFrom + 1}
         </div>
       </div>

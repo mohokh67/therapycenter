@@ -1,7 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import getConfig from 'next/config';
-// import Link from 'next/link';
-// import moment from 'moment';
 import Hour from './Hour';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
@@ -13,7 +11,6 @@ class Day extends Component {
       parseInt(x, 10)
     );
     const isWorkingDay = workingDays.includes(today.day());
-    let hourAvailability = 3;
 
     if (!isWorkingDay) {
       return (
@@ -34,7 +31,6 @@ class Day extends Component {
       { length: dayEndsAt - dayBeginsAt },
       (x, i) => dayBeginsAt + i
     );
-    hourAvailability = 1;
 
     return (
       <div className="columns">
@@ -46,8 +42,8 @@ class Day extends Component {
             key={thisHour}
             startFrom={thisHour}
             today={today.unix()}
-            availability={hourAvailability}
             updateBooking={this.props.updateBooking}
+            massageId={this.props.massageId}
           />
         ))}
       </div>
