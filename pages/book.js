@@ -60,11 +60,11 @@ class Book extends Component {
    * @integer date: unix timestamp
    * @integer startFrom: a number between 9 to 18
    */
-  updateBooking = (date, startFrom, updatedBooking) => {
+  updateBooking = (massageId, date, startFrom, updatedBooking) => {
     console.log('going to update the state');
     return new Promise((resolve, reject) => {
-      let massageId = 'sports-massage';
-      let dateTimeStamp = moment.unix(date).format('YYYYMMDD');
+      // let massageId = 'sports-massage';
+      const dateTimeStamp = moment.unix(date).format('YYYYMMDD');
 
       firebaseApp
         .database()

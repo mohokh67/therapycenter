@@ -50,6 +50,7 @@ class Hour extends Component {
       updatedAt: 0
     };
     this.props.updateBooking(
+      this.props.massageId,
       this.props.today,
       this.props.startFrom,
       updatedBooking
