@@ -6,7 +6,15 @@ import { fetchItem } from '../../lib/utility';
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
 class Hour extends Component {
+  _isMounted = false;
+
+  state = {
+    isFree: false,
+    isLoading: true
+  };
+
   componentDidMount() {
+    this._isMounted = true;
     const { props } = this;
     const dateTimeStamp = moment.unix(props.today).format('YYYYMMDD');
 
@@ -15,23 +23,19 @@ class Hour extends Component {
         props.startFrom
       }`
     }).then(result => {
-      const thisHourButton = document.getElementById(this.generateUniqueId());
-      // I don't like this approach :(
+      if (this._isMounted) {
+        this.setState({ isLoading: false });
+      }
       if (result == null || result.available == 'free') {
-        thisHourButton.classList.add('is-success');
-        thisHourButton.addEventListener('click', this.bookMe);
-        thisHourButton.setAttribute(
-          'title',
-          publicRuntimeConfig.booking.freeToBook
-        );
-      } else {
-        thisHourButton.classList.add('is-danger');
-        thisHourButton.setAttribute(
-          'title',
-          publicRuntimeConfig.booking.alreadyBooked
-        );
+        if (this._isMounted) {
+          this.setState({ isFree: true });
+        }
       }
     });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   bookMe = () => {
@@ -48,15 +52,28 @@ class Hour extends Component {
     );
   };
 
-  generateUniqueId = () => {
-    const dateTimeStamp = moment.unix(this.props.today).format('YYYYMMDD');
-    return `button-${dateTimeStamp}-${this.props.startFrom}`;
+  nothing = () => {
+    return;
   };
 
   render() {
     return (
-      <div className="column has-text-centered">
-        <div className="button" id={this.generateUniqueId()}>
+      <div
+        className="column has-text-centered is-loading"
+        title={
+          this.state.isFree
+            ? publicRuntimeConfig.booking.freeToBook
+            : publicRuntimeConfig.booking.alreadyBooked
+        }
+      >
+        <div
+          className={
+            'button is-outlined ' +
+            (this.state.isFree ? 'is-success' : 'is-danger is-static') +
+            (this.state.isLoading ? ' is-loading' : '')
+          }
+          onClick={this.state.isFree ? this.bookMe : this.nothing}
+        >
           {this.props.startFrom}-{this.props.startFrom + 1}
         </div>
       </div>
