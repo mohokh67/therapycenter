@@ -11,9 +11,9 @@ class TheNavbar extends Component {
     //TODO: close menu on scroll down
     const navbarBurger = document.querySelector('.navbar-burger');
     const target = navbarBurger.dataset.target;
-    const vanbarMenu = document.getElementById(target);
+    const navbarMenu = document.getElementById(target);
     navbarBurger.classList.toggle('is-active');
-    vanbarMenu.classList.toggle('is-active');
+    navbarMenu.classList.toggle('is-active');
   }
 
   render() {
