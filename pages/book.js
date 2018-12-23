@@ -28,15 +28,6 @@ const Booking = withRouter(props => {
 });
 
 class Book extends Component {
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {
-  //      initial: 'state',
-  //      some: ''          // <-------  this line
-  //   }
-  //  this.updateBooking = this.updateBooking.bind(this)
-  // }
-
   state = {
     loading: false,
     bookings: {}
@@ -45,8 +36,7 @@ class Book extends Component {
   componentDidMount() {
     console.log('🔥 Booking Mounted');
     this.setState({ loading: true });
-    const massageId = this.props.query.title;
-    this.ref = base.syncState(`bookings/${massageId}`, {
+    this.ref = base.syncState(`bookings`, {
       context: this,
       state: 'bookings',
       then: () => {
@@ -60,15 +50,14 @@ class Book extends Component {
    * @integer date: unix timestamp
    * @integer startFrom: a number between 9 to 18
    */
-  updateBooking = (massageId, date, startFrom, updatedBooking) => {
+  updateBooking = (date, startFrom, updatedBooking) => {
     console.log('going to update the state');
     return new Promise((resolve, reject) => {
-      // let massageId = 'sports-massage';
       const dateTimeStamp = moment.unix(date).format('YYYYMMDD');
 
       firebaseApp
         .database()
-        .ref(`bookings/${massageId}/${dateTimeStamp}/${startFrom}`)
+        .ref(`bookings/${dateTimeStamp}/${startFrom}`)
         .set(updatedBooking)
         .then(() => {
           resolve();

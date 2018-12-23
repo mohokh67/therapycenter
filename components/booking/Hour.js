@@ -15,13 +15,10 @@ class Hour extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    const { props } = this;
-    const dateTimeStamp = moment.unix(props.today).format('YYYYMMDD');
+    const dateTimeStamp = moment.unix(this.props.today).format('YYYYMMDD');
 
     fetchItem({
-      resource: `bookings/${props.massageId}/${dateTimeStamp}/${
-        props.startFrom
-      }`
+      resource: `bookings/${dateTimeStamp}/${this.props.startFrom}`
     }).then(result => {
       if (this._isMounted) {
         this.setState({ isLoading: false });
@@ -44,13 +41,14 @@ class Hour extends Component {
     }
 
     const updatedBooking = {
+      serviceId: this.props.massageId,
       name: 'MoHo Khaleqi',
       available: 'booked',
       createdAt: moment().valueOf(),
       updatedAt: 0
     };
+
     this.props.updateBooking(
-      this.props.massageId,
       this.props.today,
       this.props.startFrom,
       updatedBooking
