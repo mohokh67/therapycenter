@@ -55,6 +55,13 @@ class Book extends Component {
     return new Promise((resolve, reject) => {
       const dateTimeStamp = moment.unix(date).format('YYYYMMDD');
 
+      // This part should work with setState and re-base should take care of it. It doesn't work for now
+      // let bookings = { ...this.state.bookings};
+      // bookings[dateTimeStamp] = bookings[dateTimeStamp] || [];
+      // bookings[dateTimeStamp][startFrom] = bookings[dateTimeStamp][startFrom] || {};
+      // bookings[dateTimeStamp][startFrom] = updatedBooking;
+      // this.setState({bookings});
+
       firebaseApp
         .database()
         .ref(`bookings/${dateTimeStamp}/${startFrom}`)
