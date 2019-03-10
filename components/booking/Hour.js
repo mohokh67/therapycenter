@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import getConfig from 'next/config';
 import moment from 'moment';
+import swal from 'sweetalert';
 import { fetchItem } from '../../lib/utility';
 
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
@@ -36,7 +37,13 @@ class Hour extends Component {
   }
 
   bookMe = () => {
-    if (!this.state.isFree || this.state.isLoading) {
+    if (this.state.isLoading) {
+      return false;
+    }
+
+    if (!this.state.isFree) {
+      console.log('already booked.');
+      swal('Sorry!', publicRuntimeConfig.booking.alreadyBooked, 'error');
       return false;
     }
 
@@ -68,7 +75,7 @@ class Hour extends Component {
         <div
           className={
             'button is-outlined ' +
-            (this.state.isFree ? 'is-success' : 'is-danger is-static') +
+            (this.state.isFree ? 'is-success' : 'is-danger') +
             (this.state.isLoading ? ' is-loading' : '')
           }
           onClick={this.bookMe}

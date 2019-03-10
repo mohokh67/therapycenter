@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import moment from 'moment';
-import base, { firebaseApp } from '../lib/base';
+import base, { firebase } from '../lib/base';
 import Item from '../components/Item';
 import sourceData from '../data';
 import Calendar from '../components/booking/Calendar';
-
 const Massage = withRouter(props => {
   const massageId = props.router.query.title;
   const currentMassage = sourceData.massages.find(
@@ -62,7 +61,7 @@ class Book extends Component {
       // bookings[dateTimeStamp][startFrom] = updatedBooking;
       // this.setState({bookings});
 
-      firebaseApp
+      firebase
         .database()
         .ref(`bookings/${dateTimeStamp}/${startFrom}`)
         .set(updatedBooking)
