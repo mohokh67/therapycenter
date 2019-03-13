@@ -1,19 +1,63 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
+import getConfig from 'next/config';
+import Router from 'next/router';
 import { toggleContactForm } from '../lib/utility';
+import { auth } from '../lib/base';
 
 const headerStyle = {
   borderBottom: '1px solid #3EC6E0'
 };
 
+const { publicRuntimeConfig } = getConfig();
+
 class TheNavbar extends Component {
+  _isMounted = false;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      signedIn: false
+    };
+  }
+
+  signOut = async () => {
+    await auth.signOut();
+    localStorage.removeItem(publicRuntimeConfig.localStorageUserId);
+    if (this._isMounted) {
+      this.setState({
+        signedIn: false
+      });
+    }
+    Router.push('/');
+  };
+
   toggleMobileMenu() {
     //TODO: close menu on scroll down
+    // TODO: I don't like this approach. I need to think in react way
     const navbarBurger = document.querySelector('.navbar-burger');
     const target = navbarBurger.dataset.target;
     const navbarMenu = document.getElementById(target);
     navbarBurger.classList.toggle('is-active');
     navbarMenu.classList.toggle('is-active');
+  }
+
+  componentDidMount() {
+    this._isMounted = true;
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        // signed in
+        if (this._isMounted) {
+          this.setState({
+            signedIn: true
+          });
+        }
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
@@ -64,6 +108,23 @@ class TheNavbar extends Component {
                 Contact
               </a>
             </Link>
+            {this.state.signedIn ? (
+              <div className="navbar-item has-dropdown is-hoverable">
+                <a className="navbar-link">MoHo</a>
+
+                <div className="navbar-dropdown">
+                  <a className="navbar-item">My profile</a>
+                  <hr className="navbar-divider" />
+                  <a className="navbar-item" onClick={this.signOut}>
+                    <strong>Sign out</strong>
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <Link href="/signin">
+                <a className="navbar-item">Sign in</a>
+              </Link>
+            )}
           </div>
         </div>
       </nav>
