@@ -24,9 +24,9 @@
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
     "bulma": "^0.7.4",
-    "dotenv": "^6.2.0",
+    "dotenv": "^7.0.0",
     "express": "^4.16.4",
-    "firebase": "^5.8.6",
+    "firebase": "^5.9.0",
     "google-maps-react": "^2.0.2",
     "moment": "^2.24.0",
     "next": "^8.0.3",
@@ -36,7 +36,9 @@
     "re-base": "4.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "mobx": "^5.9.0",
+    "mobx-react": "^5.4.3"
   },
   "husky": {
     "hooks": {
@@ -50,7 +52,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^5.15.1",
+    "eslint": "^5.15.2",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-html": "^5.0.3",
@@ -59,6 +61,8 @@
     "babel-eslint": "^10.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.5",
-    "prettier": "^1.16.4"
+    "prettier": "^1.16.4",
+    "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-proposal-decorators": "^7.3.0"
   }
 }
