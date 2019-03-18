@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import Head from 'next/head';
 import getConfig from 'next/config';
 import Router from 'next/router';
+import { inject, observer } from 'mobx-react';
 import { auth, firebase, firestore } from '../lib/base';
 import {
   fetchDocumentFromCollectionByFieldName,
@@ -11,6 +12,8 @@ import Loading from '../components/Loading';
 
 const { publicRuntimeConfig } = getConfig();
 
+@inject('authStore')
+@observer
 export default class signin extends Component {
   _isMounted = false;
 
@@ -68,9 +71,9 @@ export default class signin extends Component {
         uid: result.user.uid,
         email: result.user.email,
         name: result.user.displayName,
-
         photo: result.user.photoURL
       };
+      this.props.authStore.authorise(result.user.uid);
       this.authHandler(authUser);
     });
   };

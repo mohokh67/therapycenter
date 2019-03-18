@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Link from 'next/link';
 import getConfig from 'next/config';
 import Router from 'next/router';
+import { inject, observer } from 'mobx-react';
 import { toggleContactForm } from '../lib/utility';
 import { auth } from '../lib/base';
 
@@ -11,6 +12,8 @@ const headerStyle = {
 
 const { publicRuntimeConfig } = getConfig();
 
+@inject('authStore')
+@observer
 class TheNavbar extends Component {
   _isMounted = false;
 
@@ -23,6 +26,7 @@ class TheNavbar extends Component {
 
   signOut = async () => {
     await auth.signOut();
+    this.props.authStore.signout();
     localStorage.removeItem(publicRuntimeConfig.localStorageUserId);
     if (this._isMounted) {
       this.setState({

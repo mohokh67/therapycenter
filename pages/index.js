@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { inject, observer } from 'mobx-react';
 import sourceData from '../data';
 import TheMap from '../components/TheMap';
 import Item from '../components/Item';
@@ -10,9 +11,13 @@ import getConfig from 'next/config';
 // console.log(serverRuntimeConfig.mySecret); // Will only be available on the server side
 // console.log(publicRuntimeConfig); // Will be available on both server and client
 
+@inject('authStore')
+@observer
 export default class Index extends Component {
   render() {
     // console.log(sourceData);
+    const { authStore } = this.props;
+    console.log(authStore);
     return (
       <Fragment>
         <div className="container is-fluid">
