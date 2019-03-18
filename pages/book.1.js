@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'next/router';
 import moment from 'moment';
-import base, { firebase, auth } from '../lib/base';
-import Router from 'next/router';
+import base, { firebase } from '../lib/base';
 import Item from '../components/Item';
 import sourceData from '../data';
 import Calendar from '../components/booking/Calendar';
@@ -28,38 +27,10 @@ const Booking = withRouter(props => {
 });
 
 class Book extends Component {
-  static async getInitialProps({ query, res }) {
-    let loggedIn = false;
-    await new Promise(resolve => {
-      auth.onAuthStateChanged(user => {
-        if (user) {
-          loggedIn = true;
-        }
-        resolve();
-      });
-    });
-    if (!loggedIn) {
-      if (res) {
-        // res.writeHead(302, {
-        //   Location: '/signin'
-        // });
-        res.redirect('/signin');
-        res.end();
-      } else {
-        Router.push('/signin');
-      }
-    }
-
-    return {};
-  }
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      loading: false,
-      bookings: {}
-    };
-  }
+  state = {
+    loading: false,
+    bookings: {}
+  };
 
   componentDidMount() {
     console.log('🔥 Booking Mounted');
