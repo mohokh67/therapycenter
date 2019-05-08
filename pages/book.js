@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { withRouter } from 'next/router';
-import moment from 'moment';
-import base, { firebase, auth } from '../lib/base';
-import Router from 'next/router';
-import Item from '../components/Item';
-import sourceData from '../data';
-import Calendar from '../components/booking/Calendar';
+import React, { Component } from "react";
+import { withRouter } from "next/router";
+import moment from "moment";
+import base, { firebase, auth } from "../lib/base";
+import Router from "next/router";
+import Item from "../components/Item";
+import sourceData from "../data";
+import Calendar from "../components/booking/Calendar";
 const Massage = withRouter(props => {
   const massageId = props.router.query.title;
   const currentMassage = sourceData.massages.find(
@@ -43,10 +43,10 @@ class Book extends Component {
         // res.writeHead(302, {
         //   Location: '/signin'
         // });
-        res.redirect('/signin');
+        res.redirect("/signin");
         res.end();
       } else {
-        Router.push('/signin');
+        Router.push("/signin");
       }
     }
 
@@ -62,13 +62,13 @@ class Book extends Component {
   }
 
   componentDidMount() {
-    console.log('🔥 Booking Mounted');
+    console.log("🔥 Booking Mounted");
     this.setState({ loading: true });
     this.ref = base.syncState(`bookings`, {
       context: this,
-      state: 'bookings',
+      state: "bookings",
       then: () => {
-        console.log('✔🔄 Just synced with firebase');
+        console.log("✔🔄 Just synced with firebase");
         this.setState({ loading: false });
       }
     });
@@ -79,9 +79,9 @@ class Book extends Component {
    * @integer startFrom: a number between 9 to 18
    */
   updateBooking = (date, startFrom, updatedBooking) => {
-    console.log('going to update the state');
+    console.log("going to update the state");
     return new Promise((resolve, reject) => {
-      const dateTimeStamp = moment.unix(date).format('YYYYMMDD');
+      const dateTimeStamp = moment.unix(date).format("YYYYMMDD");
 
       // This part should work with setState and re-base should take care of it. It doesn't work for now
       // let bookings = { ...this.state.bookings};
@@ -101,7 +101,7 @@ class Book extends Component {
   };
 
   componentWillUnmount() {
-    console.log('📤 App Unmounting');
+    console.log("📤 App Unmounting");
     base.removeBinding(this.ref);
   }
 

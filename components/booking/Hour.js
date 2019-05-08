@@ -4,7 +4,7 @@ import moment from 'moment';
 import swal from 'sweetalert';
 import { fetchItem } from '../../lib/utility';
 
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig();
 
 class Hour extends Component {
   _isMounted = false;
