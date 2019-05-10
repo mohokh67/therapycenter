@@ -6,7 +6,6 @@ import TheHeader from './../components/TheHeader';
 import Item from '../components/Item';
 
 import sourceData from '../data';
-
 class Home extends Component {
   render() {
     return (

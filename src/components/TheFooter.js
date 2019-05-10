@@ -7,21 +7,21 @@ export default function TheFooter() {
 
   const subscriptionInput = React.createRef();
 
-  const subscribe = () => {
+  const subscribe = async () => {
     if(false) {
       const email = subscriptionInput.current.value;
-      findByField({
+      const foundUser = await findByField({
         collectionName: 'subscribers',
         fieldName: 'email',
         value: email
-      }).then(foundUser => {
-        if (isEmpty(foundUser)) {
-          create({
-            collectionName: 'subscribers',
-            document: { email }
-          });
-        }
       });
+
+      if (isEmpty(foundUser)) {
+        create({
+          collectionName: 'subscribers',
+          document: { email }
+        });
+      }
 
       subscriptionInput.current.value = ''
     }

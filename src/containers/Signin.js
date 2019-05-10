@@ -44,28 +44,6 @@ function Signin(props) {
     }
 
     props.history.push('/');
-
-    // findByField({
-    //   collectionName: 'users',
-    //   fieldName: 'uid',
-    //   value: authUser.uid
-    // }).then(foundUser => {
-    //   if (isEmpty(foundUser)) {
-    //     // it is an empty object
-    //     // add the user to users collection and go to home page
-    //     create({
-    //       collectionName: 'users',
-    //       document: authUser
-    //     }).then(createdUser => {
-    //       localStorage.setItem(localStorageUserId, createdUser.id);
-    //     });
-    //   } else {
-    //     // if yes, go to home page
-    //     localStorage.setItem(localStorageUserId, foundUser.id);
-    //   }
-    // }).then(() => {
-    //   props.history.push('/')
-    // });
   };
 
   useEffect(() => {
@@ -77,38 +55,35 @@ function Signin(props) {
     }
   });
 
+  return (
+    <>
+      <div className="container is-fluid">
+        <div className="columns is-multiline signin">
+          <div className="column is-one-third is-offset-one-third has-text-centered button-container">
+            <button
+              className="button google is-fullwidth"
+              onClick={() => authenticate('Google')}
+            >
+              <span className="icon">
+                <i className="fab fa-google" />
+              </span>
+              <span>Login with Google</span>
+            </button>
 
-
-    return (
-      <>
-        <div className="container is-fluid">
-          <div className="columns is-multiline signin">
-            <div className="column is-one-third is-offset-one-third has-text-centered button-container">
-              <button
-                className="button google is-fullwidth"
-                onClick={() => authenticate('Google')}
-              >
-                <span className="icon">
-                  <i className="fab fa-google" />
-                </span>
-                <span>Login with Google</span>
-              </button>
-
-              <button
-                className="button facebook is-fullwidth"
-                onClick={() => authenticate('Facebook')}
-              >
-                <span className="icon">
-                  <i className="fab fa-facebook" />
-                </span>
-                <span>Login with Facebook</span>
-              </button>
-            </div>
+            <button
+              className="button facebook is-fullwidth"
+              onClick={() => authenticate('Facebook')}
+            >
+              <span className="icon">
+                <i className="fab fa-facebook" />
+              </span>
+              <span>Login with Facebook</span>
+            </button>
           </div>
         </div>
-      </>
-    );
-
+      </div>
+    </>
+  );
 }
 
 

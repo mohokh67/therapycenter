@@ -3,9 +3,6 @@ import moment from "moment";
 import { connect } from 'react-redux';
 import { firebase } from "./../lib/base";
 
-// import { isLoggedIn } from '../actions/authActions';
-
-
 import Item from "../components/Item";
 import sourceData from "../data";
 import Calendar from "../components/booking/Calendar";
