@@ -1,9 +1,10 @@
 // import { auth } from "./../lib/base";
+// import { findName } from './../lib/usersCollection';
 
-export function signin(authUserId) {
+export function signin(user) {
   return {
       type: 'SIGNIN',
-      payload: authUserId
+      payload: user
   };
 }
 
@@ -13,6 +14,22 @@ export function singout() {
       payload: 0
   };
 }
+
+// export function signin(user) {
+
+//   return async dispatch => {
+//     const thisUser = await findName(user.uid);
+//     console.log(thisUser);
+//     const x = {
+//       uid: user.uid,
+//       displayName: thisUser.name
+//     }
+//     dispatch({
+//       type: 'SIGNIN',
+//       payload: x
+//     });
+//   }
+// }
 
 // export function isLoggedIn() {
 //   return dispatch => {

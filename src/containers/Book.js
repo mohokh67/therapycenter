@@ -1,26 +1,26 @@
 import React, { useEffect } from "react";
 import moment from "moment";
 import { connect } from 'react-redux';
+import { Helmet } from "react-helmet";
 import { firebase } from "./../lib/base";
-
 import Item from "../components/Item";
 import sourceData from "../data";
 import Calendar from "../components/booking/Calendar";
-
+import { create } from './../lib/firestoreHelper';
 
 function Book(props) {
 
+  const { massageId, calendarView } = props.match.params;
+  const currentMassage = sourceData.massages.find(
+    massage => massage.id === massageId
+  );
+
   const Massage =(() => {
-    const { massageId } = props.match.params;
-    const currentMassage = sourceData.massages.find(
-      massage => massage.id === massageId
-    );
+
     return <Item service={currentMassage} key={currentMassage.id} showBooking={false} />;
   });
 
   const Booking = (() => {
-    const { massageId, calendarView } = props.match.params;
-    // let book = new Book();
     return (
       <div className="column is-8">
         <Calendar
@@ -46,22 +46,31 @@ function Book(props) {
     // });
 
     return function cleanup() {
-      console.log("📤 App Unmounting");
+      // console.log("📤 App Unmounting");
       // base.removeBinding(ref);
     };
 
-  })
+  }, [])
 
 
   /**
    * @integer date: unix timestamp
    * @integer startFrom: a number between 9 to 18
    */
-  const updateBooking = (date, startFrom, updatedBooking) => {
+  const updateBooking = async (date, startFrom, updatedBooking) => {
     console.log("going to update the state");
-    return new Promise((resolve, reject) => {
-      const dateTimeStamp = moment.unix(date).format("YYYYMMDD");
+    const dateTimeStamp = moment.unix(date).format("YYYYMMDD");
 
+    const document = {
+      ...updatedBooking,
+      date: dateTimeStamp,
+      startFrom,
+      userId: props.auth.userId,
+      serviceId: massageId
+    }
+    await create({ collectionName: 'bookings', document });
+
+    return new Promise((resolve, reject) => {
       firebase
         .database()
         .ref(`bookings/${dateTimeStamp}/${startFrom}`)
@@ -70,10 +79,14 @@ function Book(props) {
           resolve();
         });
     });
+
   };
 
   return (
     <div className="container is-fluid">
+      <Helmet>
+        <title>{currentMassage.name} booking - Sports Massage Therapy Center</title>
+      </Helmet>
       <div className="columns is-multiline">
         <Massage />
         <Booking />

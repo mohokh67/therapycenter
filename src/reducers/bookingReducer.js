@@ -5,7 +5,7 @@ const bookingReducer = (state = {}, action) => {
       state = {
         ...state,
         authenticated: true,
-        authUserId: action.payload
+        userId: action.payload
       };
       break;
 

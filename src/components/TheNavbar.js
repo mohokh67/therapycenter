@@ -7,7 +7,6 @@ const headerStyle = {
 };
 
 export default function TheNavBar (props) {
-
   return(
     <nav
       className="navbar is-transparent is-fixed-top is-dark"
@@ -44,7 +43,7 @@ export default function TheNavBar (props) {
           <Link to="#" className="navbar-item" onClick={props.showContactForm}>Contact</Link>
           { props.authenticated ? (
             <div className="navbar-item has-dropdown is-hoverable">
-              <span className="navbar-link">MoHo</span>
+              <span className="navbar-link">{props.username}</span>
 
               <div className="navbar-dropdown">
                 <NavLink to="#" className="navbar-item" activeClassName="selected">My profile</NavLink>

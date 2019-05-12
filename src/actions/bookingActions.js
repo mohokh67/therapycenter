@@ -1,6 +1,6 @@
-export function book(authUserId) {
+export function book(userId) {
   return {
       type: 'XX',
-      payload: authUserId
+      payload: userId
   };
 }

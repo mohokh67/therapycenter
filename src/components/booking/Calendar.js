@@ -15,29 +15,28 @@ export default function Calendar (props) {
     return moment().add(1, 'weeks');
   }
 
+  const bookingEndDate = calcBookingEndDate(props.view);
+  let calendarDays = [];
+  let currentDate = moment();
+  let i = 0;
+  while (currentDate.isSameOrBefore(bookingEndDate)) {
+    calendarDays.push(currentDate);
+    i++;
+    currentDate = moment().add(i, 'days');
+  }
 
-    const bookingEndDate = calcBookingEndDate(props.view);
-    let calendarDays = [];
-    let currentDate = moment();
-    let i = 0;
-    while (currentDate.isSameOrBefore(bookingEndDate)) {
-      calendarDays.push(currentDate);
-      i++;
-      currentDate = moment().add(i, 'days');
-    }
-
-    return (
-      <>
-        <CalendarView massageId={props.massageId} view={props.view} />
-        {calendarDays.map(thisDay => (
-          <Day
-            key={thisDay.unix()}
-            today={thisDay}
-            updateBooking={props.updateBooking}
-            massageId={props.massageId}
-          />
-        ))}
-      </>
-    );
+  return (
+    <>
+      <CalendarView massageId={props.massageId} view={props.view} />
+      {calendarDays.map(thisDay => (
+        <Day
+          key={thisDay.unix()}
+          today={thisDay}
+          updateBooking={props.updateBooking}
+          massageId={props.massageId}
+        />
+      ))}
+    </>
+  );
 
 }

@@ -28,7 +28,7 @@ function App(props) {
     new Promise((resolve, reject) => {
       auth.onAuthStateChanged(user => {
         if (user && !props.auth.authenticated) {
-          props.signIn(user.uid);
+          props.signIn(user);
         }
         resolve();
       });
@@ -40,6 +40,7 @@ function App(props) {
       <TheNavBar
         logout={logout}
         authenticated={props.auth.authenticated}
+        username={props.auth.username}
         showContactForm={props.showContactForm} />
       <main className="site-content">
         <Routes />
@@ -62,8 +63,8 @@ const mapDispatchToProps = dispatch => {
     signOut: () => {
       dispatch(singout());
     },
-    signIn: userId => {
-      dispatch(signin(userId));
+    signIn: user => {
+      dispatch(signin(user));
     },
     showContactForm: () => {
       dispatch(showForm());

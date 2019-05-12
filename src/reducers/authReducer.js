@@ -1,6 +1,7 @@
 const initialState = {
-  authUserId: 0,
-  authenticated: false
+  userId: 0,
+  authenticated: false,
+  username: 'Guest'
 }
 
 const authReducer = (state = initialState, action) => {
@@ -10,7 +11,8 @@ const authReducer = (state = initialState, action) => {
       state = {
         ...state,
         authenticated: true,
-        authUserId: action.payload
+        userId: action.payload.uid,
+        username: action.payload.displayName
       };
       break;
 
@@ -18,17 +20,18 @@ const authReducer = (state = initialState, action) => {
       state = {
         ...state,
         authenticated: false,
-        authUserId: 0
+        userId: 0,
+        username: 'Guest'
       };
       break;
 
-    case 'IS_LOGGED_IN':
-      state = {
-        ...state,
-        authenticated: (action.payload === 0 ? false : true ),
-        authUserId: action.payload
-      };
-      break;
+    // case 'IS_LOGGED_IN':
+    //   state = {
+    //     ...state,
+    //     authenticated: (action.payload === 0 ? false : true ),
+    //     userId: action.payload
+    //   };
+    //   break;
 
     default:
       break;
