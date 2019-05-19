@@ -41,6 +41,7 @@ export default function Day(props) {
           today={today.unix()}
           updateBooking={props.updateBooking}
           massageId={props.massageId}
+          isUserAllowToBook={props.isUserAllowToBook}
         />
       ))}
     </div>

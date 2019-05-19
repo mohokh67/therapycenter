@@ -6,9 +6,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import auth from './reducers/authReducer';
 import contactForm from './reducers/contactFormReducer'
-import bookings from './reducers/bookingReducer'
+import user from './reducers/userReducer'
 
-const reducers = combineReducers({ auth, contactForm, bookings });
+const reducers = combineReducers({ auth, contactForm, user });
 const initialState = {};
 // No need for this logger in production
 const middlewares = applyMiddleware(logger, thunk, promise);

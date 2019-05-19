@@ -2,23 +2,22 @@ import React, { useEffect } from "react";
 import moment from "moment";
 import { connect } from 'react-redux';
 import { Helmet } from "react-helmet";
-import { firebase } from "./../lib/base";
 import Item from "../components/Item";
 import sourceData from "../data";
 import Calendar from "../components/booking/Calendar";
 import { create } from './../lib/firestoreHelper';
+import { futureAppointmentsCount } from './../lib/usersCollection';
+import { disallowToBook } from './../actions/userActions';
+
+const maximumAppointmentCount = parseInt(process.env.REACT_APP_BOOKING_MAX_NUMBER);
 
 function Book(props) {
-
   const { massageId, calendarView } = props.match.params;
   const currentMassage = sourceData.massages.find(
     massage => massage.id === massageId
   );
 
-  const Massage =(() => {
-
-    return <Item service={currentMassage} key={currentMassage.id} showBooking={false} />;
-  });
+  const Massage =(() => <Item service={currentMassage} key={currentMassage.id} showBooking={false} />);
 
   const Booking = (() => {
     return (
@@ -27,6 +26,7 @@ function Book(props) {
           view={calendarView}
           massageId={massageId}
           updateBooking={updateBooking}
+          isUserAllowToBook={props.user.allowToBook}
         />
       </div>
     );
@@ -58,6 +58,13 @@ function Book(props) {
    * @integer startFrom: a number between 9 to 18
    */
   const updateBooking = async (date, startFrom, updatedBooking) => {
+    const { userId } = props.auth;
+    const totalAppointments = await futureAppointmentsCount(userId);
+    if(totalAppointments >= maximumAppointmentCount) {
+      props.disallowToBook();
+      return false;
+    }
+
     console.log("going to update the state");
     const dateTimeStamp = moment.unix(date).format("YYYYMMDD");
 
@@ -65,20 +72,10 @@ function Book(props) {
       ...updatedBooking,
       date: dateTimeStamp,
       startFrom,
-      userId: props.auth.userId,
+      userId,
       serviceId: massageId
     }
     await create({ collectionName: 'bookings', document });
-
-    return new Promise((resolve, reject) => {
-      firebase
-        .database()
-        .ref(`bookings/${dateTimeStamp}/${startFrom}`)
-        .set(updatedBooking)
-        .then(() => {
-          resolve();
-        });
-    });
 
   };
 
@@ -100,13 +97,13 @@ const mapStoreToProps = state => ({
   ...state
 })
 
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     isLoggedIn: () => {
-//       dispatch(isLoggedIn());
-//     }
-//   }
-// }
+const mapDispatchToProps = dispatch => {
+  return {
+    disallowToBook: () => {
+      dispatch(disallowToBook());
+    }
+  }
+}
 
-export default connect(mapStoreToProps, null)(Book);
+export default connect(mapStoreToProps, mapDispatchToProps)(Book);
 

@@ -34,6 +34,7 @@ export default function Calendar (props) {
           today={thisDay}
           updateBooking={props.updateBooking}
           massageId={props.massageId}
+          isUserAllowToBook={props.isUserAllowToBook}
         />
       ))}
     </>

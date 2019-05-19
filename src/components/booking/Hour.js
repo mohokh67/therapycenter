@@ -39,6 +39,12 @@ export default function Hour(props) {
       return false;
     }
 
+    if(!props.isUserAllowToBook) {
+      console.log('User is not allow to book more then 3 appointments.');
+      swal('Sorry!', process.env.REACT_APP_BOOKING_MAX_NUMBER_REACHED, 'info');
+      return false;
+    }
+
     const updatedBooking = {
       serviceId: props.massageId,
       name: 'MoHo Khaleqi',
