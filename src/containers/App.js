@@ -30,7 +30,6 @@ function App(props) {
       auth.onAuthStateChanged(user => {
         if (user && !props.auth.authenticated) {
           props.signIn(user);
-          props.isAllowedToBook(user.uid);
         }
         resolve();
       });
@@ -67,15 +66,13 @@ const mapDispatchToProps = dispatch => {
     },
     signIn: user => {
       dispatch(signin(user));
+      dispatch(isAllowedToBook(user.uid))
     },
     showContactForm: () => {
       dispatch(showForm());
     },
     hideContactForm: () => {
       dispatch(hideForm());
-    },
-    isAllowedToBook: userId => {
-      dispatch(isAllowedToBook(userId))
     }
   }
 }
