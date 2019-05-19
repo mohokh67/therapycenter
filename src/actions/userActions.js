@@ -20,7 +20,7 @@ export function disallowToBook() {
   }
 }
 
-
+/*
 export function totalAppointmentsInFutur(userId) {
 
   return async dispatch => {
@@ -32,19 +32,19 @@ export function totalAppointmentsInFutur(userId) {
   }
 }
 
+export function signin(user) {
 
-// export function signin(user) {
-
-//   return async dispatch => {
-//     const thisUser = await findName(user.uid);
-//     console.log(thisUser);
-//     const x = {
-//       uid: user.uid,
-//       displayName: thisUser.name
-//     }
-//     dispatch({
-//       type: 'SIGNIN',
-//       payload: x
-//     });
-//   }
-// }
+  return async dispatch => {
+    const thisUser = await findName(user.uid);
+    console.log(thisUser);
+    const x = {
+      uid: user.uid,
+      displayName: thisUser.name
+    }
+    dispatch({
+      type: 'SIGNIN',
+      payload: x
+    });
+  }
+}
+*/
