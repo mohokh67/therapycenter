@@ -47,7 +47,6 @@ export default function Hour(props) {
 
     const updatedBooking = {
       serviceId: props.massageId,
-      name: 'MoHo Khaleqi',
       available: 'booked',
       createdAt: moment().valueOf(),
       updatedAt: 0

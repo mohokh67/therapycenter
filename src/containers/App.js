@@ -5,6 +5,7 @@ import Routes from "./../components/Routes";
 import { connect } from 'react-redux';
 import { singout, signin } from '../actions/authActions';
 import { showForm, hideForm } from '../actions/contactFormActions';
+import { isAllowedToBook } from '../actions/userActions';
 
 import TheNavBar from './../components/TheNavbar';
 import TheFooter from './../components/TheFooter';
@@ -29,6 +30,7 @@ function App(props) {
       auth.onAuthStateChanged(user => {
         if (user && !props.auth.authenticated) {
           props.signIn(user);
+          props.isAllowedToBook(user.uid);
         }
         resolve();
       });
@@ -71,6 +73,9 @@ const mapDispatchToProps = dispatch => {
     },
     hideContactForm: () => {
       dispatch(hideForm());
+    },
+    isAllowedToBook: userId => {
+      dispatch(isAllowedToBook(userId))
     }
   }
 }

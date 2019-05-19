@@ -71,6 +71,7 @@ function Book(props) {
     const document = {
       ...updatedBooking,
       date: dateTimeStamp,
+      name: props.auth.username,
       startFrom,
       userId,
       serviceId: massageId
