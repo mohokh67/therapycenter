@@ -1,0 +1,278 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400, 700);
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: #f0f0f0;
+  line-height: 1.5;
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  color: #2e2e2e;
+}
+
+.site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.site-content {
+  flex: 1;
+  padding-top: 1rem;
+}
+
+/* Fixes and Helpers */
+
+.noSpace {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  padding: 0;
+}
+
+.carouselContainer {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+i.fa {
+  margin-right: 0.9rem;
+  text-align: left;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.inverse {
+  color: #f0f0f0;
+}
+
+.link,
+.link:hover {
+  text-decoration: none;
+}
+
+.link:hover {
+  color: #3ec6e0;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex__spaceAround {
+  justify-content: space-around;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.grid__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.bgBlue {
+  background-color: #53cfe9;
+}
+
+.bgBlueDark {
+  background-color: #3ec6e0;
+}
+
+.bgBlack {
+  background-color: #2e2e2e;
+}
+
+/* Top Nav*/
+
+.page__topNav {
+  border-bottom: 1px solid #3ec6e0;
+  /*background-color: #3DD9D6;*/
+}
+
+.page__title {
+  font-size: 4rem;
+  font-weight: normal;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+}
+
+.page__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media screen and (max-width: 480px) {
+  .page__nav {
+    flex-direction: column;
+  }
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0),
+    rgba(158, 158, 158, 0.75),
+    rgba(0, 0, 0, 0)
+  );
+}
+
+#map {
+  height: 400px;
+  width: 100%;
+}
+
+/*  cards */
+
+.card {
+  flex: 1;
+  text-align: center;
+  margin: 1rem;
+  flex-basis: 300px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.card__title {
+  font-size: 4.5rem;
+  font-weight: lighter;
+  letter-spacing: 0.2rem;
+  font-weight: normal;
+  line-height: 1.2;
+}
+
+.card__price {
+  font-size: 3rem;
+  font-weight: normal;
+}
+
+.card__price,
+.card__footer {
+  line-height: 1;
+  padding: 13px;
+  color: #fff;
+}
+
+.card__title__info {
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+.card__content {
+  position: relative;
+  color: #fefefe;
+  padding: 20px 0 10px 0;
+}
+
+/*arrow creation*/
+
+.card__content:after,
+.card__content:before,
+.card__footer:before,
+.card__footer:after {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.card__footer:after,
+.card__footer:before {
+  top: 0;
+}
+
+.card__content:after,
+.card__footer:after {
+  border-color: rgba(136, 183, 213, 0);
+  border-width: 5px;
+  margin-left: -5px;
+}
+
+.card__content:after {
+  border-top-color: #53cfe9;
+}
+
+.card__footer:after {
+  border-top-color: #ffffff;
+}
+
+.card__footer {
+  color: #fefefe;
+  text-transform: capitalize;
+  line-height: 2.5;
+}
+
+.card__description {
+  background: #fff;
+  line-height: 1.7;
+  text-align: justify;
+  padding: 25px;
+  color: #5e5e5e;
+  font-size: 1.3rem;
+}
+
+.card__features {
+  list-style-type: none;
+  background: #ffffff;
+  text-align: left;
+  color: #5f5f5f;
+  padding: 30px 50px;
+  font-size: 1.5rem;
+  flex-grow: 1;
+}
+
+.card__features li {
+  padding: 7px 0 7px 5px;
+  width: 100%;
+  text-indent: -12px;
+  line-height: 1.5;
+}
+
+.card__footer {
+  position: relative;
+  margin-top: auto;
+  text-transform: capitalize;
+}
+
+/*  Footer  */
+
+footer {
+  min-height: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  line-height: 2.3;
+}
+
+.footer__item {
+  margin-bottom: 1rem;
+}
+
+p.mailing-list {
+  padding-bottom: 0.4rem;
+}
