@@ -6,6 +6,7 @@ import { signin } from '../actions/authActions';
 
 import { isEmpty } from '../lib/utility';
 import { findByField, create } from './../lib/firestoreHelper';
+import RegisterForm from './../components/RegisterWithEmailAndPassword';
 
 
 
@@ -46,6 +47,14 @@ function Signin(props) {
     props.history.push('/');
   };
 
+  // const registerUserWithEmailAndPassword = () => {
+  //   return firebase.auth().createUserWithEmailAndPassword(email, password)
+  //     .then(data => {
+  //       return dispatch('users/createUser', {id: data.user.uid, email, password, name, username, avatar}, {root: true})
+  //     })
+  //     .then(() => { dispatch('fetchAuthUser') })
+  // }
+
   useEffect(() => {
     if(props.auth.authenticate){
       // this is not working
@@ -59,7 +68,7 @@ function Signin(props) {
     <>
       <div className="container is-fluid">
         <div className="columns is-multiline signin">
-          <div className="column is-one-third is-offset-one-third has-text-centered button-container">
+          <div className="column is-half has-text-centered button-container">
             <button
               className="button google is-fullwidth"
               onClick={() => authenticate('Google')}
@@ -80,6 +89,12 @@ function Signin(props) {
               <span>Login with Facebook</span>
             </button>
           </div>
+
+          <div className="column is-half">
+            <RegisterForm />
+
+          </div>
+
         </div>
       </div>
     </>
